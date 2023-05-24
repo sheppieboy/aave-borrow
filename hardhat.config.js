@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL;
 
 module.exports = {
   defaultNetwork: 'hardhat',
@@ -12,9 +13,17 @@ module.exports = {
       accounts: [PRIVATE_KEY],
       chainId: 11155111,
     },
-    localhost: {
-      url: 'http://127.0.0.1:8545/',
+    hardhat: {
       chainId: 31337,
+      forking: {
+        url: MAINNET_RPC_URL,
+      },
+    },
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+      1: 0,
     },
   },
   solidity: {
