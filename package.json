@@ -1,0 +1,23 @@
+{
+  "name": "hardhat-defi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "hardhat": "^2.14.0",
+    "hardhat-deploy": "^0.11.29",
+    "hardhat-deploy-ethers": "^0.3.0-beta.13"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^0.6.1",
+    "dotenv": "^16.0.3",
+    "solhint": "^3.4.1"
+  }
+}
