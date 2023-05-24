@@ -1,5 +1,8 @@
+const { getWeth } = require('./getWeth');
+
 const main = async () => {
   //aave treats everything like ERC-20 token
+  await getWeth();
 };
 
 main()
