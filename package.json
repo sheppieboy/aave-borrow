@@ -1,8 +1,8 @@
 {
-  "name": "hardhat-defi",
+  "name": "aave-borrow",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This is a smart contract project that will:",
+  "main": "hardhat.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,8 +16,6 @@
     "hardhat-deploy-ethers": "^0.3.0-beta.13"
   },
   "dependencies": {
-    "@chainlink/contracts": "^0.6.1",
-    "dotenv": "^16.0.3",
-    "solhint": "^3.4.1"
+    "dotenv": "^16.0.3"
   }
 }
