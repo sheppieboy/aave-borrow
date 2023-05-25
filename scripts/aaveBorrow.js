@@ -7,8 +7,8 @@ const main = async () => {
 
   const { deployer } = await getNamedAccounts();
   //abi, address to interact with aave protocol
-
-  //Lending Pool Address Provider
+  const lendingPool = await getLendingPool(deployer);
+  console.log(lendingPool.address);
 };
 const getLendingPool = async (account) => {
   const lendingPoolAddressProvider = await ethers.getContractAt(
@@ -23,6 +23,7 @@ const getLendingPool = async (account) => {
     lendingPoolAddress,
     account
   );
+  return lendingPool;
 };
 
 main()
