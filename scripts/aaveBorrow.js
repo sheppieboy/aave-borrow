@@ -11,7 +11,7 @@ const main = async () => {
   console.log(lendingPool.address);
 
   //token to deposit
-  const wethTokenAddress = '0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5';
+  const wethTokenAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
 
   //approve
   await approveERC20(wethTokenAddress, lendingPool.address, AMOUNT, deployer);
