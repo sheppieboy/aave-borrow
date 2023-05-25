@@ -21,11 +21,19 @@ const main = async () => {
   await lendingPool.deposit(wethTokenAddress, AMOUNT, deployer, 0);
   console.log('Deposited!');
 
+  //How much we have borrowed, how much we have in collateral, and how much we can borrow
+  let { availableBorrowsETH, totalDebtETH } = await getBorrowUserData(
+    lendingPool,
+    deployer
+  );
+
   //how much DAI can we borrow based on the ETH we deposited?
+  const daiPrice = await getDaiPrice();
+  const amountDaiToBorrow =
+    availableBorrowsETH.toString() * 0.95 * (1 / daiPrice.toNumber());
+  console.log(`You can borrow ${amountDaiToBorrow} DAI`);
 
   //borrow
-  //How much we have borrowed, how much we have in collateral, and how much we can borrow
-  await getBorrowUserData(lendingPool, deployer);
 };
 
 const getLendingPool = async (account) => {
@@ -69,12 +77,12 @@ const getBorrowUserData = async (lendingPool, account) => {
   return { totalDebtETH, availableBorrowsETH };
 };
 
-const getDaiPriceFeed = async () => {
+const getDaiPrice = async () => {
   const daiEthPriceFeed = await ethers.getContractAt(
     'AggregatorV3Interface',
     '0x773616E4d11A78F511299002da57A0a94577F1f4'
   );
-  const price = await daiEthPriceFeed.latestRoundData()[1];
+  const price = (await daiEthPriceFeed.latestRoundData())[1];
   console.log(`The DAI/ETH price is ${price}`);
   return price;
 };
