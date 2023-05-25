@@ -20,6 +20,9 @@ const main = async () => {
   //deposit
   await lendingPool.deposit(wethTokenAddress, AMOUNT, deployer, 0);
   console.log('Deposited!');
+
+  //borrow
+  //How much we have borrowed, how much we have in collateral, and how much we can borrow
 };
 
 const getLendingPool = async (account) => {
@@ -52,6 +55,15 @@ const approveERC20 = async (
   const tx = await erc20Token.approve(spenderAddress, amountToSpend);
   await tx.wait(1);
   console.log('Approved!');
+};
+
+const getBorrowUSerData = async (lendingPool, account) => {
+  const { totalCollateralETH, totalDebtETH, availableBorrowsETH } =
+    await lendingPool.getUserAccountData(account);
+  console.log(`You have ${totalCollateralETH} worth of ETH deposited`);
+  console.log(`You have ${totalDebtETH} worth of ETH borrowed`);
+  console.log(`You can borrow ${availableBorrowsETH} worth of ETH`);
+  return { totalDebtETH, availableBorrowsETH };
 };
 
 main()
